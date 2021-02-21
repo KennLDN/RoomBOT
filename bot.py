@@ -5,6 +5,8 @@ from discord.ext import tasks, commands
 from utils.roomgen import RoomGen
 from utils.uploaders.sul import SulUploader
 
+JOIN_URL = "https://curvewars.com/lobby/{0}"
+
 try:
     from config import BOT_TOKEN, CHANNEL, UPLOADER_API_KEY, RENDER_DIR
 except ModuleNotFoundError:
@@ -36,8 +38,8 @@ class Bot(commands.Bot):
                 await self.messagelist[k]["message"].delete()
                 del self.messagelist[k]
 
-        for filename in RENDERS:
-            filename = RENDER_DIR + "/" + filename
+        for rawfilename in RENDERS:
+            filename = RENDER_DIR + "/" + rawfilename
             mtime = getmtime(filename)
 
             if filename in self.messagelist:
@@ -49,7 +51,7 @@ class Bot(commands.Bot):
 
                     url, self.messagelist[filename]["file_id"] = self.uploader.uploadFile(filename)
 
-                    embed = discord.Embed()
+                    embed = discord.Embed(title="Join", url=JOIN_URL.format(rawfilename.removesuffix(".png")))
                     embed.set_image(url=url)
 
                     await self.messagelist[filename]["message"].edit(embed=embed)
@@ -57,7 +59,7 @@ class Bot(commands.Bot):
             else:
                 url, fid = self.uploader.uploadFile(filename)
 
-                embed = discord.Embed()
+                embed = discord.Embed(title="Join", url=JOIN_URL.format(rawfilename.removesuffix(".png")))
                 embed.set_image(url=url)
 
                 msg = await channel.send(embed=embed)
