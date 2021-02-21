@@ -1,5 +1,5 @@
 from .uploader import BaseUploader, MissingApiKey, UploadError
-import requests
+from requests import post
 
 class SulUploader(BaseUploader):
 
@@ -15,7 +15,7 @@ class SulUploader(BaseUploader):
     def upload(self, fd):
         data = {'wizard': 'true', 'key': self.key}
 
-        res = requests.post(self._apiurl,
+        res = post(self._apiurl,
                             data=data,
                             files={'file': fd})
 
@@ -33,7 +33,7 @@ class SulUploader(BaseUploader):
 
     def delete(self, filename: str):
         url = "{0}?key={1}&file={2}".format(self._deleteurl, self.key, filename)
-        res = requests.post(url)
+        res = post(url)
 
         return res.status_code == 200
 

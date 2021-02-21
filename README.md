@@ -2,6 +2,7 @@
 A python powered discord bot, sending a live list of CurveWars rooms to a channel.
 
 1. Install requirements.txt
-2. Add a curvewars account to utils/curvewars.py, and a bot token, s-ul api key, and channel id to bot.py
+2. Copy config.py.example to config.py and fill out the fields
+3. run bot.py
 
-[Contributors](https://github.com/KennLDN/RoomBOT/blob/main/CONTRIBUTORS.md)
+[Contributors](CONTRIBUTORS.md)

@@ -1,0 +1,16 @@
+
+# explains itself
+BOT_TOKEN = ""
+
+# Channel ID where we are going to post renders to
+CHANNEL = int("")
+
+# api key for the image uploader used
+# s-ul.eu is currently the only one
+UPLOADER_API_KEY=""
+
+# name of directory where renders will be put
+RENDER_DIR = "render"
+
+# Curvewars login details
+CURSEWARS_LOGIN = ["username", "password"]
