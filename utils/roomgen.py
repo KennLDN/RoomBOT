@@ -46,7 +46,7 @@ class RoomGen:
             roomStarted = ImageDraw.Draw(room)
             roomStarted.text((220,19), "In Progress?: " + self.boolToString(i["Game Started"]), font=self.fbold, fill=(200,200,200,255))
             avgRank = ImageDraw.Draw(room)
-            avgRank.text((220,39), "Average Rank: " + str(round(i["Average Rank"])), font=self.fbold, fill=(200,200,200,255))
+            avgRank.text((220,39), "Average Rank: " + str(round(i["Average Rank"] if i["Average Rank"] else 0)), font=self.fbold, fill=(200,200,200,255))
 
             # powerups
             pl_w = 463
