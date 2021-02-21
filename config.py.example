@@ -13,4 +13,4 @@ UPLOADER_API_KEY=""
 RENDER_DIR = "render"
 
 # Curvewars login details
-CURSEWARS_LOGIN = ["username", "password"]
+CURVEWARS_LOGIN = ["username", "password"]
